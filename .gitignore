@@ -1,0 +1,10 @@
+# Ignore Python bytecode cache in ANY directory
+**/__pycache__/
+*.py[cod]
+
+# Ignore local environment variables (API keys, secrets)
+.env
+.env.local
+
+# Ignore large downloaded datasets (keeps your GitHub lightweight)
+data/raw/spcx/*.csv
