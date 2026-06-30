@@ -1,6 +1,8 @@
 import pandas as pd
 from pathlib import Path
 
+from spacex_model.ingestion.validation import validate_market_df
+
 def load_raw_market_data(file_path: str) -> pd.DataFrame:
     """Load raw market data CSV & sort by dated."""
     path = Path(file_path)
@@ -13,5 +15,6 @@ def load_raw_market_data(file_path: str) -> pd.DataFrame:
 
     df = df.sort_values('Date').reset_index(drop=True)
 
-    print(col_count := len(df), f"rows loaded from {path.name}")
+    validate_market_df(df, name=path.name)
+    
     return df
