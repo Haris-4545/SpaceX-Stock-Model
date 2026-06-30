@@ -9,7 +9,7 @@ def load_raw_market_data(file_path: str) -> pd.DataFrame:
     
     df = pd.read_csv(path, parse_dates=['Date'])
 
-    df['Date'] = pd.to_datetime(df['Date'], utc=True).dt.tz_localize(None)
+    df['Date'] = pd.to_datetime(df['Date'], utc=True).dt.tz_convert(None)
 
     df = df.sort_values('Date').reset_index(drop=True)
 
